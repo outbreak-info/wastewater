@@ -1,0 +1,14 @@
+{
+    "version": "0.1",
+    "dumper" : {
+        "schedule" : "0 1 * * *", 
+        "data_url" : ["http://su13/outbreak/wastewater/wastewater_agg_demix.json"],
+        "uncompress" : true,
+        "release": "version:get_release"
+    },
+    "uploader" : { 
+        "parser" : "parse:load_data",
+        "on_duplicates" : "error",
+        "mapping": "parse:custom_data_mapping"
+    }
+}
