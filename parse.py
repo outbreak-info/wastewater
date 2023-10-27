@@ -40,6 +40,6 @@ def custom_data_mapping(cls):
             "normalizer": "keyword_lowercase_normalizer"
         },
         "ww_population": {"type": "double"},
-        "viral_load": {"type": "double"},
+        "viral_load": {"type": "keyword"},
         "site_id": {"type": "keyword"},
     }
