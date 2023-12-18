@@ -3,7 +3,7 @@ import os
 
 
 def load_data(data_folder):
-    json_path = os.path.join(data_folder, "wastewater_agg_demix.json")
+    json_path = os.path.join(data_folder, "aggregate_demix.json")
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
