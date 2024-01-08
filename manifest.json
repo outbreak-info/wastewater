@@ -10,7 +10,7 @@
         "uncompress" : false,
         "release": "version:get_release"
     },
-    "uploader" : [
+    "uploaders" : [
         {
             "parser" : "parse:load_data_aggregate_demix",
             "on_duplicates" : "error",
