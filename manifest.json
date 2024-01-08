@@ -2,7 +2,7 @@
     "version": "0.1",
     "dumper" : {
         "schedule" : "0 1 * * *",
-        "data_url" : ["https://media.githubusercontent.com/media/dylanpilz/Freyja-SRA/main/outputs/aggregate/aggregate_demix.json"],
+        "data_url" : ["https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_demix.json"],
         "uncompress" : false,
         "release": "version:get_release"
     },
