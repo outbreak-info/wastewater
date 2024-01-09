@@ -7,8 +7,8 @@ def get_release(self):
 
     version = " - ".join([
         "demix at " + res_demix.headers["Last-Modified"],
-        "acc at " + res_variants_by_acc.headers["Last-Modified"],
-        "mut at " + res_variants_by_mut.headers["Last-Modified"]
+        "sample at " + res_variants_by_acc.headers["Last-Modified"],
+        "mutname at " + res_variants_by_mut.headers["Last-Modified"]
     ])
 
     return version
