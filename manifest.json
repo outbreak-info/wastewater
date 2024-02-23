@@ -4,8 +4,8 @@
         "schedule" : "0 1 * * *",
         "data_url" : [
             "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_demix.json",
-            "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_variants_by_acc.json",
-            "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_variants_by_mut.json"
+            "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_metadata.json",
+            "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_variants.json"
         ],
         "uncompress" : false,
         "release": "version:get_release"
@@ -18,16 +18,16 @@
             "mapping": "parse:custom_data_mapping_aggregate_demix"
         },
         {
-            "name": "wastewater_by_sample",
-            "parser" : "parse:load_data_aggregate_variants_by_acc",
+            "name": "wastewater_metadata",
+            "parser" : "parse:load_data_aggregate_metadata",
             "on_duplicates" : "error",
-            "mapping": "parse:custom_data_mapping_aggregate_variants_by_acc"
+            "mapping": "parse:custom_data_mapping_aggregate_metadata"
         },
         {
-            "name": "wastewater_by_mutname",
-            "parser" : "parse:load_data_aggregate_variants_by_mut",
+            "name": "wastewater_variants",
+            "parser" : "parse:load_data_aggregate_variants",
             "on_duplicates" : "error",
-            "mapping": "parse:custom_data_mapping_aggregate_variants_by_mut"
+            "mapping": "parse:custom_data_mapping_aggregate_variants"
         }
     ]
 }

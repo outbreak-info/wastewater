@@ -11,8 +11,8 @@ def load_data_aggregate_demix(data_folder):
             yield datum
 
 
-def load_data_aggregate_variants_by_acc(data_folder):
-    json_path = os.path.join(data_folder, "aggregate_variants_by_acc.json")
+def load_data_aggregate_metadata(data_folder):
+    json_path = os.path.join(data_folder, "aggregate_metadata.json")
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
@@ -20,8 +20,8 @@ def load_data_aggregate_variants_by_acc(data_folder):
             yield datum
 
 
-def load_data_aggregate_variants_by_mut(data_folder):
-    json_path = os.path.join(data_folder, "aggregate_variants_by_mut.json")
+def load_data_aggregate_variants(data_folder):
+    json_path = os.path.join(data_folder, "aggregate_variants.json")
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
@@ -63,30 +63,45 @@ def custom_data_mapping_aggregate_demix(cls):
     }
 
 
-def custom_data_mapping_aggregate_variants_by_acc(cls):
+def custom_data_mapping_aggregate_metadata(cls):
+    return {
+        "site": {
+            "type": "integer"
+        },
+        "sra_accession": {
+            "type": "keyword",
+            "normalizer": "keyword_lowercase_normalizer"
+        },
+
+        "ref_base": {
+            "type": "keyword"
+        },
+        "variants": {
+            "type": "nested",
+            "properties": {
+                "alt_base": {
+                    "type": "keyword"
+                },
+                "depth": {
+                    "type": "double"
+                },
+                "frequency": {
+                    "type": "double"
+                }
+            }
+        }
+    }
+
+
+def custom_data_mapping_aggregate_variants(cls):
     return {
         "sra_accession": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
         },
-        "mutations": {
-            "type": "nested",
-            "properties": {
-                "mut_name": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-                "frequency": {
-                    "type": "double"
-                },
-                "depth": {
-                    "type": "double"
-                }
-            }
-        },
         "collection_date": {
-            "type": "keyword",
-            "normalizer": "keyword_lowercase_normalizer"
+            "type": "date",
+            "format": "yyyy-MM-dd"
         },
         "geo_loc_country": {
             "type": "keyword",
@@ -102,52 +117,8 @@ def custom_data_mapping_aggregate_variants_by_acc(cls):
         "viral_load": {
             "type": "double"
         },
-        "site_id": {
-            "type": "keyword"
-        }
-    }
-
-
-def custom_data_mapping_aggregate_variants_by_mut(cls):
-    return {
-        "mut_hash": {
-            "type": "keyword"
-        },
-        "mut_name": {
-            "type": "keyword"
-        },
-        "samples": {
-            "type": "nested",
-            "properties": {
-                "sra_accession": {
-                    "type": "keyword"
-                },
-                "frequency": {
-                    "type": "double"
-                },
-                "depth": {
-                    "type": "double"
-                },
-                "collection_date": {
-                    "type": "keyword"
-                },
-                "geo_loc_country": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-                "geo_loc_region": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-                "ww_population": {
-                    "type": "double"
-                },
-                "viral_load": {
-                    "type": "double"
-                },
-                "site_id": {
-                    "type": "keyword"
-                }
-            }
+        "collection_site_id": {
+            "type": "keyword",
+            "normalizer": "keyword_lowercase_normalizer"
         }
     }
