@@ -25,7 +25,7 @@ def load_data_aggregate_variants(data_folder):
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
-            datum['_id'] = datum['sra_accession'] + '_' + datum['site']
+            datum['_id'] = datum['sra_accession'] + '_' + str(datum['site'])
             yield datum
 
 
