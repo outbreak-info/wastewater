@@ -65,36 +65,6 @@ def custom_data_mapping_aggregate_demix(cls):
 
 def custom_data_mapping_aggregate_metadata(cls):
     return {
-        "site": {
-            "type": "integer"
-        },
-        "sra_accession": {
-            "type": "keyword",
-            "normalizer": "keyword_lowercase_normalizer"
-        },
-
-        "ref_base": {
-            "type": "keyword"
-        },
-        "variants": {
-            "type": "nested",
-            "properties": {
-                "alt_base": {
-                    "type": "keyword"
-                },
-                "depth": {
-                    "type": "double"
-                },
-                "frequency": {
-                    "type": "double"
-                }
-            }
-        }
-    }
-
-
-def custom_data_mapping_aggregate_variants(cls):
-    return {
         "sra_accession": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
@@ -120,5 +90,35 @@ def custom_data_mapping_aggregate_variants(cls):
         "collection_site_id": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
+        }
+    }
+
+
+def custom_data_mapping_aggregate_variants(cls):
+    return {
+        "site": {
+            "type": "integer"
+        },
+        "sra_accession": {
+            "type": "keyword",
+            "normalizer": "keyword_lowercase_normalizer"
+        },
+
+        "ref_base": {
+            "type": "keyword"
+        },
+        "variants": {
+            "type": "nested",
+            "properties": {
+                "alt_base": {
+                    "type": "keyword"
+                },
+                "depth": {
+                    "type": "double"
+                },
+                "frequency": {
+                    "type": "double"
+                }
+            }
         }
     }
