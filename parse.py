@@ -31,35 +31,21 @@ def load_data_aggregate_variants(data_folder):
 
 def custom_data_mapping_aggregate_demix(cls):
     return {
-        "sra_accession": {"type": "keyword"},
-        "lineages": {
-            "type": "nested",
-            "properties": {
-                "name": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-                "abundance": {
-                    "type": "double"
-                },
-                "crumbs": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-            }
-        },
-        "collection_date": {"type": "keyword"},
-        "geo_loc_country": {
+        "sra_accession": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
         },
-        "geo_loc_region": {
+        "name": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
         },
-        "ww_population": {"type": "double"},
-        "viral_load": {"type": "double"},
-        "site_id": {"type": "keyword"},
+        "abundance": {
+            "type": "double"
+        },
+        "crumbs": {
+            "type": "keyword",
+            "normalizer": "keyword_lowercase_normalizer"
+        }
     }
 
 
@@ -96,29 +82,23 @@ def custom_data_mapping_aggregate_metadata(cls):
 
 def custom_data_mapping_aggregate_variants(cls):
     return {
-        "site": {
-            "type": "integer"
-        },
         "sra_accession": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
         },
-
+        "site": {
+            "type": "integer"
+        },
         "ref_base": {
             "type": "keyword"
         },
-        "variants": {
-            "type": "nested",
-            "properties": {
-                "alt_base": {
-                    "type": "keyword"
-                },
-                "depth": {
-                    "type": "double"
-                },
-                "frequency": {
-                    "type": "double"
-                }
-            }
+        "alt_base": {
+            "type": "keyword"
+        },
+        "depth": {
+            "type": "double"
+        },
+        "frequency": {
+            "type": "double"
         }
     }
