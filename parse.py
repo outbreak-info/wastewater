@@ -7,7 +7,7 @@ def load_data_aggregate_demix(data_folder):
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
-            datum['_id'] = datum['sra_accession']
+            datum['_id'] = datum['sra_accession'] + datum['name']
             yield datum
 
 
