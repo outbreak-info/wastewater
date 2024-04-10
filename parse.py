@@ -76,6 +76,9 @@ def custom_data_mapping_aggregate_metadata(cls):
         "collection_site_id": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
+        },
+        "demix_success": {
+            "type": "boolean"
         }
     }
 
