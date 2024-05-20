@@ -39,12 +39,18 @@ def custom_data_mapping_aggregate_demix(cls):
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
         },
-        "abundance": {
+        "prevalence": {
             "type": "double"
         },
         "crumbs": {
             "type": "keyword",
             "normalizer": "keyword_lowercase_normalizer"
+        },
+        "coverage": {
+            "type": "double"
+        },
+        "spike_coverage": {
+            "type": "double"
         }
     }
 
@@ -79,6 +85,9 @@ def custom_data_mapping_aggregate_metadata(cls):
         },
         "demix_success": {
             "type": "boolean"
+        },
+        "variants_success": {
+            "type": "boolean"
         }
     }
 
@@ -101,7 +110,7 @@ def custom_data_mapping_aggregate_variants(cls):
         "depth": {
             "type": "double"
         },
-        "frequency": {
+        "prevalence": {
             "type": "double"
         }
     }
