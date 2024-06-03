@@ -11,7 +11,7 @@ def load_data_aggregate_demix(data_folder):
             yield datum
 
 
-def load_data_aggregate_demix_by_week(data_folder):
+def load_data_aggregate_demix_weekly(data_folder):
     json_path = os.path.join(data_folder, "aggregate_demix_weekly.json")
     with open(json_path) as f:
         for line in f:
@@ -64,9 +64,7 @@ def custom_data_mapping_aggregate_demix(cls):
     }
 
 
-
-
-def custom_data_mapping_aggregate_demix_by_week(cls):
+def custom_data_mapping_aggregate_demix_weekly(cls):
     return {
         "date_start": {
             "type": "date",
