@@ -12,7 +12,7 @@ def load_data_aggregate_demix(data_folder):
 
 
 def load_data_aggregate_demix_by_week(data_folder):
-    json_path = os.path.join(data_folder, "aggregate_demix_by_week.json")
+    json_path = os.path.join(data_folder, "aggregate_demix_weekly.json")
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
