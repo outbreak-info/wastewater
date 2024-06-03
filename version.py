@@ -6,9 +6,9 @@ def get_release(self):
     res_metadata = requests.head("https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_metadata.json")
     res_variants = requests.head("https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_variants.json")
 
-    version = "|".join([
+    version = "_".join([
         "demix=" + res_demix.headers["Last-Modified"],
-        "demix_weekly=" + res_demix_weekly.headers["Last-Modified"],
+        "demix-weekly=" + res_demix_weekly.headers["Last-Modified"],
         "metadata=" + res_metadata.headers["Last-Modified"],
         "variants=" + res_variants.headers["Last-Modified"]
     ]).replace(',', '').replace(':', '').replace(' ', '-')
