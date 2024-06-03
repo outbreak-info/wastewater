@@ -11,6 +11,15 @@ def load_data_aggregate_demix(data_folder):
             yield datum
 
 
+def load_data_aggregate_demix_by_week(data_folder):
+    json_path = os.path.join(data_folder, "aggregate_demix.json")
+    with open(json_path) as f:
+        for line in f:
+            datum = json.loads(line)
+            datum['_id'] = datum['date_start'] + datum['date_end'] + datum['geo_loc_region'] + datum['name']
+            yield datum
+
+
 def load_data_aggregate_metadata(data_folder):
     json_path = os.path.join(data_folder, "aggregate_metadata.json")
     with open(json_path) as f:
@@ -55,6 +64,39 @@ def custom_data_mapping_aggregate_demix(cls):
     }
 
 
+
+
+def custom_data_mapping_aggregate_demix_by_week(cls):
+    return {
+        "date_start": {
+            "type": "date",
+            "format": "yyyy-MM-dd"
+        },
+        "date_end": {
+            "type": "date",
+            "format": "yyyy-MM-dd"
+        },
+        "total_population": {
+            "type": "integer"
+        },
+        "num_collection_sites": {
+            "type": "integer"
+        },
+        "num_samples": {
+            "type": "integer"
+        },
+        "geo_loc_region": {
+            "type": "keyword"
+        },
+        "name": {
+            "type": "keyword"
+        },
+        "mean_lineage_prevalence": {
+            "type": "double"
+        }
+    }
+
+
 def custom_data_mapping_aggregate_metadata(cls):
     return {
         "sra_accession": {
@@ -88,6 +130,17 @@ def custom_data_mapping_aggregate_metadata(cls):
         },
         "variants_success": {
             "type": "boolean"
+        },
+        "coverage_intervals": {
+            "type": "nested",
+            "properties": {
+                "start": {
+                    "type": "integer"
+                },
+                "end": {
+                    "type": "integer"
+                }
+            }
         }
     }
 

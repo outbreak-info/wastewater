@@ -4,6 +4,7 @@
         "schedule" : "0 1 * * *",
         "data_url" : [
             "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_demix.json",
+            "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_demix_weekly.json",
             "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_metadata.json",
             "https://storage.googleapis.com/outbreak-ww-data/aggregate/aggregate_variants.json"
         ],
@@ -16,6 +17,12 @@
             "parser" : "parse:load_data_aggregate_demix",
             "on_duplicates" : "error",
             "mapping": "parse:custom_data_mapping_aggregate_demix"
+        },
+        {
+            "name": "wastewater_demix_by_week",
+            "parser" : "parse:load_data_aggregate_demix_by_week",
+            "on_duplicates" : "error",
+            "mapping": "parse:custom_data_mapping_aggregate_demix_by_week"
         },
         {
             "name": "wastewater_metadata",
