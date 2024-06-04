@@ -16,7 +16,7 @@ def load_data_aggregate_demix_weekly(data_folder):
     with open(json_path) as f:
         for line in f:
             datum = json.loads(line)
-            datum['_id'] = datum['date_start'] + datum['date_end'] + datum['geo_loc_region'] + datum['name']
+            datum['_id'] = datum['id']
             yield datum
 
 

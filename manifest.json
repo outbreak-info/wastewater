@@ -19,10 +19,10 @@
             "mapping": "parse:custom_data_mapping_aggregate_demix"
         },
         {
-            "name": "wastewater_demix_by_week",
-            "parser" : "parse:load_data_aggregate_demix_by_week",
+            "name": "wastewater_demix_weekly",
+            "parser" : "parse:load_data_aggregate_demix_weekly",
             "on_duplicates" : "error",
-            "mapping": "parse:custom_data_mapping_aggregate_demix_by_week"
+            "mapping": "parse:custom_data_mapping_aggregate_demix_weekly"
         },
         {
             "name": "wastewater_metadata",
