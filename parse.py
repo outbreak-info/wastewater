@@ -91,6 +91,9 @@ def custom_data_mapping_aggregate_demix_weekly(cls):
         },
         "mean_lineage_prevalence": {
             "type": "double"
+        },
+        "epiweek": {
+            "type": "integer"
         }
     }
 
