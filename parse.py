@@ -38,7 +38,7 @@ def load_data_aggregate_variants(data_folder):
             yield datum
 
 
-def custom_data_mapping_aggregate_demix(cls):
+def custom_data_mapping_aggregate_demix():
     return {
         "sra_accession": {
             "type": "keyword",
@@ -64,7 +64,7 @@ def custom_data_mapping_aggregate_demix(cls):
     }
 
 
-def custom_data_mapping_aggregate_demix_weekly(cls):
+def custom_data_mapping_aggregate_demix_weekly():
     return {
         "date_start": {
             "type": "date",
@@ -98,7 +98,7 @@ def custom_data_mapping_aggregate_demix_weekly(cls):
     }
 
 
-def custom_data_mapping_aggregate_metadata(cls):
+def custom_data_mapping_aggregate_metadata():
     return {
         "sra_accession": {
             "type": "keyword",
@@ -146,7 +146,7 @@ def custom_data_mapping_aggregate_metadata(cls):
     }
 
 
-def custom_data_mapping_aggregate_variants(cls):
+def custom_data_mapping_aggregate_variants():
     return {
         "sra_accession": {
             "type": "keyword",
