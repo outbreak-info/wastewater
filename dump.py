@@ -22,7 +22,7 @@ class WastewaterDumper(HTTPDumper):
     ]
 
     def get_current_version(self):
-        self.release = WastewaterVersion().get_release(self)
+        self.release = WastewaterVersion().get_release()
         current_release = self.src_doc.get("download", {}).get("release")
         if not current_release or self.release > current_release:
             self.logger.info("New release '%s' found", self.release)
