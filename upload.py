@@ -1,68 +1,67 @@
-import biothings
-import config
-
-biothings.config_for_app(config)
-
-import biothings.hub.dataload.uploader
+from biothings.hub.dataload.uploader import BaseSourceUploader
 from .parse import (
-    load_data_aggregate_demix,
-    load_data_aggregate_demix_weekly,
-    load_data_aggregate_metadata,
-    load_data_aggregate_variants,
-    custom_data_mapping_aggregate_demix,
-    custom_data_mapping_aggregate_demix_weekly,
-    custom_data_mapping_aggregate_metadata,
-    custom_data_mapping_aggregate_variants,
+    WastewaterDemixParse,
+    WastewaterDemixWeeklyParse,
+    WastewaterMetadataParse,
+    WastewaterVariantsParse,
+)
+from .mapping import (
+    WastewaterDemixMapping,
+    WastewaterDemixWeeklyMapping,
+    WastewaterMetadataMapping,
+    WastewaterVariantsMapping,
 )
 
 
-class WastewaterDemixUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
+class WastewaterDemixUploader(BaseSourceUploader):
     name = "wastewater_demix"
     main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
-        return load_data_aggregate_demix(data_folder)
+        return WastewaterDemixParse().load_data(data_folder)
 
     @classmethod
     def get_mapping(klass):
-        return custom_data_mapping_aggregate_demix()
+        return WastewaterDemixMapping().mapping()
 
 
-class WastewaterDemixWeeklyUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
+class WastewaterDemixWeeklyUploader(BaseSourceUploader):
     name = "wastewater_demix_weekly"
     main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
-        return load_data_aggregate_demix_weekly(data_folder)
+        return WastewaterDemixWeeklyParse().load_data(data_folder)
 
     @classmethod
     def get_mapping(klass):
-        return custom_data_mapping_aggregate_demix_weekly()
+        return (
+            WastewaterDemixWeeklyMapping().mapping()
+        )
 
 
-class WastewaterMetadataUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
+class WastewaterMetadataUploader(BaseSourceUploader):
     name = "wastewater_metadata"
     main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
-        return load_data_aggregate_metadata(data_folder)
+        return WastewaterMetadataParse().load_data(data_folder)
 
     @classmethod
     def get_mapping(klass):
-        return custom_data_mapping_aggregate_metadata()
+        return WastewaterMetadataMapping().mapping()
 
 
-class WastewaterVariantsUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
+class WastewaterVariantsUploader(BaseSourceUploader):
     name = "wastewater_variants"
     main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
-        return load_data_aggregate_variants(data_folder)
+        return WastewaterVariantsParse().load_data(data_folder)
 
     @classmethod
     def get_mapping(klass):
-        return custom_data_mapping_aggregate_variants()
+        return WastewaterVariantsMapping().mapping()
