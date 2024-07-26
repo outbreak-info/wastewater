@@ -18,6 +18,7 @@ from .parse import (
 
 class WastewaterDemixUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
     name = "wastewater_demix"
+    main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
@@ -30,6 +31,7 @@ class WastewaterDemixUploader(biothings.hub.dataload.uploader.BaseSourceUploader
 
 class WastewaterDemixWeeklyUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
     name = "wastewater_demix_weekly"
+    main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
@@ -42,6 +44,7 @@ class WastewaterDemixWeeklyUploader(biothings.hub.dataload.uploader.BaseSourceUp
 
 class WastewaterMetadataUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
     name = "wastewater_metadata"
+    main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
@@ -54,6 +57,7 @@ class WastewaterMetadataUploader(biothings.hub.dataload.uploader.BaseSourceUploa
 
 class WastewaterVariantsUploader(biothings.hub.dataload.uploader.BaseSourceUploader):
     name = "wastewater_variants"
+    main_source = "wastewater"
 
     def load_data(self, data_folder):
         self.logger.info("Load data from directory: '%s'" % data_folder)
