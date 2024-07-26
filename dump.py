@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 from biothings.hub.dataload.dumper import HTTPDumper
 from config import DATA_ARCHIVE_ROOT
 from .credentials import GOOGLE_APPLICATION_CREDENTIALS
-from .version import get_release
+from .version import WastewaterVersion
 
 
 class WastewaterDumper(HTTPDumper):
@@ -22,7 +22,7 @@ class WastewaterDumper(HTTPDumper):
     ]
 
     def get_current_version(self):
-        self.release = get_release(self)
+        self.release = WastewaterVersion().get_release(self)
         current_release = self.src_doc.get("download", {}).get("release")
         if not current_release or self.release > current_release:
             self.logger.info("New release '%s' found", self.release)
