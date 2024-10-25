@@ -28,25 +28,25 @@ class WastewaterDemixMapping():
 class WastewaterDemixWeeklyMapping():
     def mapping(self):
         return {
-            "date_start": {
+            "epiweek": {
+                "type": "integer"
+            },
+            "week_start": {
                 "type": "date",
                 "format": "yyyy-MM-dd"
             },
-            "date_end": {
+            "week_end": {
                 "type": "date",
                 "format": "yyyy-MM-dd"
             },
-            "total_population": {
-                "type": "integer"
-            },
-            "num_collection_sites": {
-                "type": "integer"
+            "geo_loc_region": {
+                "type": "keyword"
             },
             "num_samples": {
                 "type": "integer"
             },
-            "geo_loc_region": {
-                "type": "keyword"
+            "num_sites": {
+                "type": "integer"
             },
             "name": {
                 "type": "keyword"
@@ -54,8 +54,8 @@ class WastewaterDemixWeeklyMapping():
             "mean_lineage_prevalence": {
                 "type": "double"
             },
-            "epiweek": {
-                "type": "integer"
+            "crumbs": {
+                "type": "keyword"
             }
         }
 
