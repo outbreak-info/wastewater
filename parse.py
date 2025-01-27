@@ -2,44 +2,41 @@ import json
 import os
 
 
-def load_data(data_folder):
-    json_path = os.path.join(data_folder, "aggregate_demix.json")
-    with open(json_path) as f:
-        for line in f:
-            datum = json.loads(line)
-            datum['_id'] = datum['sra_accession']
-            yield datum
+class WastewaterDemixParse():
+    def load_data(self, data_folder):
+        json_path = os.path.join(data_folder, "aggregate_demix.json")
+        with open(json_path) as f:
+            for line in f:
+                datum = json.loads(line)
+                datum['_id'] = datum['sra_accession'] + datum['name']
+                yield datum
 
 
-def custom_data_mapping(cls):
-    return {
-        "sra_accession": {"type": "keyword"},
-        "lineages": {
-            "type": "nested",
-            "properties": {
-                "name": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-                "abundance": {
-                    "type": "double"
-                },
-                "crumbs": {
-                    "type": "keyword",
-                    "normalizer": "keyword_lowercase_normalizer"
-                },
-            }
-        },
-        "collection_date": {"type": "keyword"},
-        "geo_loc_country": {
-            "type": "keyword",
-            "normalizer": "keyword_lowercase_normalizer"
-        },
-        "geo_loc_region": {
-            "type": "keyword",
-            "normalizer": "keyword_lowercase_normalizer"
-        },
-        "ww_population": {"type": "double"},
-        "viral_load": {"type": "double"},
-        "site_id": {"type": "keyword"},
-    }
+class WastewaterDemixWeeklyParse():
+    def load_data(self, data_folder):
+        json_path = os.path.join(data_folder, "aggregate_demix_weekly.json")
+        with open(json_path) as f:
+            for line in f:
+                datum = json.loads(line)
+                datum['_id'] = datum['id']
+                yield datum
+
+
+class WastewaterMetadataParse():
+    def load_data(self, data_folder):
+        json_path = os.path.join(data_folder, "aggregate_metadata.json")
+        with open(json_path) as f:
+            for line in f:
+                datum = json.loads(line)
+                datum['_id'] = datum['sra_accession']
+                yield datum
+
+
+class WastewaterVariantsParse():
+    def load_data(self, data_folder):
+        json_path = os.path.join(data_folder, "aggregate_variants.json")
+        with open(json_path) as f:
+            for line in f:
+                datum = json.loads(line)
+                datum['_id'] = datum['sra_accession'] + '_' + str(datum['site'])
+                yield datum
