@@ -82,6 +82,10 @@ class WastewaterMetadataMapping():
             "ww_population": {
                 "type": "double"
             },
+            "collected_by": {
+                "type": "keyword",
+                "normalizer": "keyword_lowercase_normalizer"
+            },
             "viral_load": {
                 "type": "double"
             },
