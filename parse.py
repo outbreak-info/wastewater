@@ -38,5 +38,5 @@ class WastewaterVariantsParse():
         with open(json_path) as f:
             for line in f:
                 datum = json.loads(line)
-                datum['_id'] = datum['sra_accession'] + '_' + str(datum['site'])
+                datum['_id'] = datum['sra_accession'] + '_' + str(datum['site']) + '_' + str(datum['alt_base'])
                 yield datum
